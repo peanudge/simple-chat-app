@@ -18,9 +18,9 @@ const Input: React.FC<IProps> = ({ message, setMessage, sendMessage }) => (
         event.key === "Enter" ? sendMessage(event) : null
       }
     />
-    <button className="sendButton" onClick={(event) => sendMessage(event)}>
+    {/* <button className="sendButton" onClick={(event) => sendMessage(event)}>
       Send
-    </button>
+    </button> */}
   </form>
 );
 

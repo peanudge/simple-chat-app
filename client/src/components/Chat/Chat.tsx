@@ -6,6 +6,7 @@ import "./Chat.css";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages";
+import TextContainer from "../TextContainer/TextContainer";
 
 let socket: Socket;
 
@@ -16,6 +17,7 @@ interface Prop {
 const Chat: React.FC<Prop> = ({ location }) => {
   const [name, setName] = useState<string>("");
   const [room, setRoom] = useState<string>("");
+  const [users, setUsers] = useState<{ name: string }[]>([]);
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<{ user: string; text: string }[]>(
     []
@@ -48,10 +50,12 @@ const Chat: React.FC<Prop> = ({ location }) => {
 
   useEffect(() => {
     socket.on("message", (message) => {
-      setMessages([...messages, message]);
+      setMessages((messages) => [...messages, message]);
     });
-    // TODO: check we need to messages as denpency
-  }, [messages]);
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+  }, []);
 
   const sendMessage = (event: React.KeyboardEvent | React.MouseEvent) => {
     event.preventDefault();
@@ -72,6 +76,7 @@ const Chat: React.FC<Prop> = ({ location }) => {
           setMessage={setMessage}
           sendMessage={sendMessage}
         />
+        {/* <TextContainer users={users} /> */}
       </div>
     </div>
   );

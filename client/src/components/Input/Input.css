@@ -1,13 +1,17 @@
 .form {
   display: flex;
-  border-top: 2px solid #d3d3d3;
+  justify-content: center;
+  height: 80px;
+  margin-bottom: 30px;
 }
 
 .input {
   border: none;
-  border-radius: 0;
-  padding: 5%;
-  width: 80%;
+  border-radius: 15px;
+  padding: 10px 20px 10px 20px;
+  width: 90%;
+  background-color: #495259;
+  color: #ffffff;
   font-size: 1.2em;
 }
 
@@ -18,7 +22,7 @@ select:focus {
 }
 
 .sendButton {
-  color: #fff !important;
+  color: #ffffff !important;
   text-transform: uppercase;
   text-decoration: none;
   background: #2979ff;

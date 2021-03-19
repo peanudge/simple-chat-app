@@ -20,12 +20,12 @@ const Messages: React.FC<IProps> = ({ messages, name }) => {
 
   return (
     <div className="messages">
-      {messages.map((message, i) => (
-        <Message key={i} message={message} name={name} />
-      ))}
+      {messages.map((message, i) => {
+        return <Message key={i} message={message} name={name} />;
+      })}
       <div ref={messagesEndRef} />
     </div>
   );
 };
 
-export default Messages;
+export default React.memo(Messages);

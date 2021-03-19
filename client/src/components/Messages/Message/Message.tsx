@@ -12,6 +12,7 @@ const Message: React.FC<IProps> = ({ message: { user, text }, name }) => {
     isSentByCurrentUser = true;
   }
 
+  console.log(text);
   return isSentByCurrentUser ? (
     <div className="messageContainer justifyEnd">
       <p className="sentText pr-10">{trimmedName}</p>
@@ -22,7 +23,7 @@ const Message: React.FC<IProps> = ({ message: { user, text }, name }) => {
   ) : (
     <div className="messageContainer justifyStart">
       <div className="messageBox backgroundLight">
-        <p className="messageText colorBlack">{text}</p>
+        <p className="messageText colorDark">{text}</p>
       </div>
       <p className="sentText pl-10">{user}</p>
     </div>
